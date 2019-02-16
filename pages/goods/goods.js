@@ -252,6 +252,16 @@ Page({
       url: '/pages/cart/cart',
     });
   },
+  // 立即购买
+  nowBuy:function(){
+    var that =this;
+    wx.showToast({
+      image: '/static/images/icon_error.png',
+      title: '购买开发中',
+      mask: true
+    });
+    return;
+  },
   addToCart: function () {
     var that = this;
     if (this.data.openAttr === false) {
