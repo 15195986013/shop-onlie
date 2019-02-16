@@ -5,16 +5,22 @@ var app = getApp();
 
 Page({
   data: {
-    array: [],
-    shopName: "",
-    index: 0,
+    nodes: [{
+      name: 'div',
+      attrs: {
+        class: 'div_class',
+        style: 'line-height: 60px; color: red;'
+      },
+      children: [{
+        type: 'text',
+        text: '粘贴'
+      }]
+    }]
   },
-  bindPickerChange: function(e) {
-    this.setData({
-      index: e.detail.value
-    })
+  shopName: "",
+  onLoad: function(options) {
+
   },
-  onLoad: function(options) {},
   onReady: function() {
 
   },
@@ -25,6 +31,8 @@ Page({
 
   },
   onUnload: function() {
-     
+
   }
+
+  
 })

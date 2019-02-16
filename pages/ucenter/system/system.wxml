@@ -19,7 +19,7 @@
 
   <view class="h">
     <view class="l">商品详情：</view>
-    <view class="r">{{shopName}}</view>
+    <rich-text nodes="{{nodes}}" bindtap="tap"></rich-text>
   </view>
 
 </view>

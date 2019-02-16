@@ -43,6 +43,10 @@ Page({
       });
     }, 1000);
   },
+  cancelOrder(){
+   
+
+  },
   payOrder() {
     let that = this;
     util.request(api.PayPrepayId, {
