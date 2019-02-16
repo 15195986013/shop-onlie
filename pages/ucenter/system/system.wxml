@@ -1,0 +1,25 @@
+<view class="container">
+
+  <view class="h">
+    <view class="l">商品名称：</view>
+    <view class="r">{{shopName}}</view>
+  </view>
+  <view class="h">
+    <view class="l">商品价格：</view>
+    <view class="r">{{shopName}}</view>
+  </view>
+  <view class="h">
+    <view class="l">商品库存：</view>
+    <view class="r">{{sshopName}}</view>
+  </view>
+  <view class="h">
+    <view class="l">商品轮播：</view>
+    <view class="r">{{shopName}}</view>
+  </view>
+
+  <view class="h">
+    <view class="l">商品详情：</view>
+    <view class="r">{{shopName}}</view>
+  </view>
+
+</view>
