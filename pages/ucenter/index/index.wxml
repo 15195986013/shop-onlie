@@ -70,12 +70,6 @@
         <text class="txt">意见反馈</text>
       </navigator>
     </view>
-    <view class="item item-bottom">
-      <navigator url="/pages/ucenter/system/system" class="a">
-        <text class="icon feedback"></text>
-        <text class="txt">系统管理</text>
-      </navigator>
-    </view>
   </view>
 
   <!-- <view class="logout" bindtap="exitLogin">退出登录</view> -->
@@ -86,7 +80,6 @@
     <view class='title'>请选择登录方式</view>
     <view class='content'>
       <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信登录</button>
-      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onWechatLogin">手机号登录</button>
     </view>
   </view>
 </view>
