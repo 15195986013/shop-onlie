@@ -53,7 +53,7 @@
       </navigator>
     </view>
     <view class="item no-border">
-      <navigator url="url" class="a">
+      <navigator url="/pages/ucenter/customer/customer" class="a">
         <text class="icon kefu"></text>
         <text class="txt">联系客服</text>
       </navigator>
