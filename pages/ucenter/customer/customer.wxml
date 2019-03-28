@@ -1,2 +1,3 @@
-<!--pages/ucenter/customer/customer.wxml-->
-<text>pages/ucenter/customer/customer.wxml</text>
+<view class="container">
+    <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">新建</view>
+</view>

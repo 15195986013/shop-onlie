@@ -22,8 +22,9 @@ Page({
     });
   },
   payOrder(){
+    let that= this;
     wx.redirectTo({
-      url: '/pages/pay/pay',
+      url: '/pages/pay/pay?orderId=6f2eb93eff4f49f4a246da68d9d490a9&actualPrice=0.1',
     })
   },
   onReady:function(){

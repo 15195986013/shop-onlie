@@ -4,8 +4,8 @@ var api = require('../../config/api.js');
 
 Page({
   data: {
-    orderId: 0,
-    actualPrice: 0.00
+    orderId: '6f2eb93eff4f49f4a246da68d9d490a9',
+    actualPrice: 0.10
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
