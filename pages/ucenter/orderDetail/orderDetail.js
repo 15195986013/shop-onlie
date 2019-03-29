@@ -43,8 +43,17 @@ Page({
       });
     }, 1000);
   },
-  cancelOrder(){
+  cancelOrder(event){
+   var that =this;
+   var orderId = event.target.dataset.orderId;
    
+   util.request(
+     api.cancelOrder,{
+       orderId:orderId
+     }
+   ).then(function(resp){
+     that.getOrderDetail();
+   })
 
   },
   payOrder() {
