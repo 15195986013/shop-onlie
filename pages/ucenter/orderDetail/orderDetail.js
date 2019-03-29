@@ -8,7 +8,7 @@ Page({
     orderGoods: [],
     handleOption: {}
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
     this.setData({
       orderId: options.id
@@ -19,7 +19,7 @@ Page({
     let that = this;
     util.request(api.OrderDetail, {
       orderId: that.data.orderId
-    }).then(function (res) {
+    }).then(function(res) {
       if (res.errno === 0) {
         console.log(res.data);
         that.setData({
@@ -43,24 +43,21 @@ Page({
       });
     }, 1000);
   },
-  cancelOrder(event){
-   var that =this;
-   var orderId = event.target.dataset.orderId;
-   
-   util.request(
-     api.cancelOrder,{
-       orderId:orderId
-     }
-   ).then(function(resp){
-     that.getOrderDetail();
-   })
+  cancelOrder(event) {
+    let that = this;
+    let orderId = event.target.dataset.orderid;
+    util.request(api.OrderCancel, {
+      orderId: orderId
+    }).then(function(resp) {
+      that.getOrderDetail();
+    })
 
   },
   payOrder() {
     let that = this;
     util.request(api.PayPrepayId, {
       orderId: that.data.orderId || 15
-    }).then(function (res) {
+    }).then(function(res) {
       if (res.errno === 0) {
         const payParam = res.data;
         wx.requestPayment({
@@ -69,10 +66,10 @@ Page({
           'package': payParam.package,
           'signType': payParam.signType,
           'paySign': payParam.paySign,
-          'success': function (res) {
+          'success': function(res) {
             console.log(res)
           },
-          'fail': function (res) {
+          'fail': function(res) {
             console.log(res)
           }
         });
@@ -80,16 +77,16 @@ Page({
     });
 
   },
-  onReady: function () {
+  onReady: function() {
     // 页面渲染完成
   },
-  onShow: function () {
+  onShow: function() {
     // 页面显示
   },
-  onHide: function () {
+  onHide: function() {
     // 页面隐藏
   },
-  onUnload: function () {
+  onUnload: function() {
     // 页面关闭
   }
 })
