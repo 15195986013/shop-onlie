@@ -52,6 +52,8 @@ Page({
             })
           }
         })
+      }else {
+        util.showErrorToast(res.errmsg)
       }
     });
   },
