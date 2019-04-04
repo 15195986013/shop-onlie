@@ -49,7 +49,12 @@ Page({
     util.request(api.OrderCancel, {
       orderId: orderId
     }).then(function(resp) {
-      that.getOrderDetail();
+      wx.showToast({
+        title: "订单已取消",
+      })
+      wx.redirectTo({
+        url: '/pages/ucenter/order/order',
+      })
     })
 
   },
@@ -67,10 +72,10 @@ Page({
           'signType': payParam.signType,
           'paySign': payParam.paySign,
           'success': function(res) {
-            console.log(res)
+            
           },
           'fail': function(res) {
-            console.log(res)
+            util.showErrorToast(res.errmsg);
           }
         });
       }
