@@ -21,10 +21,11 @@ Page({
       }
     });
   },
-  payOrder(){
+  
+  payOrder(event){
     let that= this;
     wx.redirectTo({
-      url: '/pages/pay/pay?orderId=6f2eb93eff4f49f4a246da68d9d490a9&actualPrice=0.1',
+      url: '/pages/pay/pay?orderId=' + event.currentTarget.dataset.orderId+'&actualPrice=' + event.currentTarget.dataset.orderPrice,
     })
   },
   onReady:function(){

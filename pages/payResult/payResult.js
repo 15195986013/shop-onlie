@@ -31,7 +31,7 @@ Page({
 
   },
   payOrder() {
-    pay.payOrder(parseInt(this.data.orderId)).then(res => {
+    pay.payOrder(this.data.orderId).then(res => {
       this.setData({
         status: true
       });
