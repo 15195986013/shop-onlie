@@ -99,7 +99,7 @@ Page({
     util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId }, 'POST').then(res => {
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
-        pay.payOrder(parseInt(orderId)).then(res => {
+        pay.payOrder(orderId).then(res => {
           wx.redirectTo({
             url: '/pages/payResult/payResult?status=1&orderId=' + orderId
           });
