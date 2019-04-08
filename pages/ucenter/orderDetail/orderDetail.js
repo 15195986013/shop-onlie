@@ -61,7 +61,8 @@ Page({
   payOrder() {
     let that = this;
     util.request(api.PayPrepayId, {
-      orderId: that.data.orderId || 15
+      orderId: that.data.orderId || 15,
+      orderPrice: that.data.orderInfo.order_price || 1000
     }).then(function(res) {
       if (res.errno === 0) {
         const payParam = res.data;
