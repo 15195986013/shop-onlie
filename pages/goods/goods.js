@@ -26,7 +26,7 @@ Page({
   },
   getGoodsInfo: function () {
     let that = this;
-    util.request(api.GoodsDetail, { id: that.data.id }).then(function (res) {
+    util.request(api.GoodsDetail, {id: that.data.id}).then(function (res) {
       if (res.errno === 0) {
         that.setData({
           goods: res.data.info,
@@ -59,7 +59,7 @@ Page({
   },
   getGoodsRelated: function () {
     let that = this;
-    util.request(api.GoodsRelated, { id: that.data.id }).then(function (res) {
+    util.request(api.GoodsRelated, {id: that.data.id}).then(function (res) {
       if (res.errno === 0) {
         that.setData({
           relatedGoods: res.data.goodsList,
@@ -223,28 +223,28 @@ Page({
   addCannelCollect: function () {
     let that = this;
     //添加或是取消收藏
-    util.request(api.CollectAddOrDelete, { typeId: 0, valueId: this.data.id }, "POST")
-      .then(function (res) {
-        let _res = res;
-        if (_res.errno == 0) {
-          if (_res.data.type == 'add') {
-            that.setData({
-              'collectBackImage': that.data.hasCollectImage
-            });
+    util.request(api.CollectAddOrDelete, {typeId: 0, valueId: this.data.id}, "POST")
+        .then(function (res) {
+          let _res = res;
+          if (_res.errno == 0) {
+            if (_res.data.type == 'add') {
+              that.setData({
+                'collectBackImage': that.data.hasCollectImage
+              });
+            } else {
+              that.setData({
+                'collectBackImage': that.data.noCollectImage
+              });
+            }
+
           } else {
-            that.setData({
-              'collectBackImage': that.data.noCollectImage
+            wx.showToast({
+              image: '/static/images/icon_error.png',
+              title: _res.errmsg,
+              mask: true
             });
           }
-
-        } else {
-          wx.showToast({
-            image: '/static/images/icon_error.png',
-            title: _res.errmsg,
-            mask: true
-          });
-        }
-      });
+        });
   },
   openCartPage: function () {
     wx.switchTab({
@@ -252,16 +252,14 @@ Page({
     });
   },
   // 立即购买
-  nowBuy:function(){
-    var that =this;
-    wx.showToast({
-      image: '/static/images/icon_error.png',
-      title: '购买开发中',
-      mask: true
+  nowBuy: function () {
+    this.addToCart(() => {
+      wx.navigateTo({
+        url: '../shopping/checkout/checkout'
+      });
     });
-    return;
   },
-  addToCart: function () {
+  addToCart: function (cb) {
     var that = this;
     if (this.data.openAttr === false) {
       //打开规格选择窗口
@@ -303,26 +301,32 @@ Page({
       }
 
       //添加到购物车
-      util.request(api.CartAdd, { goodsId: this.data.goods.id, number: this.data.number, productId: checkedProduct[0].id }, "POST")
-        .then(function (res) {
-          let _res = res;
-          if (_res.errno == 0) {
-            wx.showToast({
-              title: '添加成功'
-            });
-            that.setData({
-              openAttr: !that.data.openAttr,
-              cartGoodsCount: _res.data.cartTotal.goodsCount
-            });
-          } else {
-            wx.showToast({
-              image: '/static/images/icon_error.png',
-              title: _res.errmsg,
-              mask: true
-            });
-          }
+      util.request(api.CartAdd, {
+        goodsId: this.data.goods.id,
+        number: this.data.number,
+        productId: checkedProduct[0].id
+      }, "POST")
+          .then(function (res) {
+            let _res = res;
+            if (_res.errno == 0) {
+              wx.showToast({
+                title: '添加成功'
+              });
+              that.setData({
+                openAttr: !that.data.openAttr,
+                cartGoodsCount: _res.data.cartTotal.goodsCount
+              }, function () {
+                cb && cb();
+              });
+            } else {
+              wx.showToast({
+                image: '/static/images/icon_error.png',
+                title: _res.errmsg,
+                mask: true
+              });
+            }
 
-        });
+          });
     }
 
   },
@@ -336,4 +340,4 @@ Page({
       number: this.data.number + 1
     });
   }
-})
+});
