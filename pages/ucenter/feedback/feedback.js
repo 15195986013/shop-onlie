@@ -32,8 +32,8 @@ Page({
    
    var that = this;
     util.request(api.AddFeedback,{
-      content:that.data.content,
-      mobile: that.data.mobile,
+      msg_content:that.data.content,
+      msg_mobile: that.data.mobile,
       msg_type: that.data.index,
     },function(resp){
 
