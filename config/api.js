@@ -63,4 +63,6 @@ module.exports = {
 
   FootprintList: ApiRootUrl + 'footprint/list',  //足迹列表
   FootprintDelete: ApiRootUrl + 'footprint/delete',  //删除足迹
+
+  AddFeedback: ApiRootUrl + 'feedback/add',  //添加评论
 };
