@@ -33,18 +33,17 @@ Page({
     requestPayParam() {
         let that = this;
         util.request(api.PayPrepayId, {
-            orderId: that.data.orderId,
-            payType: 1
+            orderId: that.data.orderId
         }).then(function (res) {
             if (res.errno === 0) {
-                let payParam = res.data;
-                wx.requestPayment({
-                    'timeStamp': payParam.timeStamp,
-                    'nonceStr': payParam.timeStamp,
-                    'package': payParam.nonceStr,
-                    'signType': payParam.signType,
-                    'paySign': payParam.paySign,
-                    'success': function (res) {
+              const payParam = res.data;
+              wx.requestPayment({
+                'timeStamp': payParam.timeStamp,
+                'nonceStr': payParam.nonceStr,
+                'package': payParam.package,
+                'signType': payParam.signType,
+                'paySign': payParam.paySign,
+                'success': function (res) {
                         if (res.errno === 0) {
                             util.request(api.OrderUpdate, {
                                 orderId: that.data.orderId,
