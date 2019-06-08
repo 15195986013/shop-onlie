@@ -1,4 +1,5 @@
-const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+// const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+const ApiRootUrl = 'https://shop.zhaoweiriyong.com/api/';
 // const ApiRootUrl = 'http://192.168.1.112:8360/api/';
 // const ApiRootUrl = 'http://192.168.1.112:8360/api/';//本机地址
 // const ApiRootUr®l = 'http://118.190.147.56:8360/api/';//服务器地址
